@@ -4,6 +4,7 @@ from dotenv import load_dotenv, find_dotenv
 from agents import Agent, RunConfig, Runner, AsyncOpenAI, OpenAIChatCompletionsModel, set_tracing_disabled
 from agents.tool import function_tool
 from tavily import TavilyClient
+# from agents.extensions.visualization import draw_graph
 
 load_dotenv(find_dotenv())
 
@@ -112,8 +113,8 @@ async def main():
                 print("Exiting...")
                 break
             # run agent
-            result = await Runner.run(starting_agent=shopping_agent, input=user_input)
-            print(result.final_output)  
+            response = await Runner.run(starting_agent=shopping_agent, input=user_input)
+            print(f"**{response.last_agent.name}**:\n\n {response.final_output}")  
         except KeyboardInterrupt:
             print("Exiting...")
             break
@@ -124,6 +125,8 @@ async def main():
 if __name__ == "__main__":
     print("Starting agent...")
     print("Press Ctrl+C to exit.")
+    # draw_graph(shopping_agent, "shopping_agent_graph.png")
+    # print("Graph saved as shopping_agent_graph.png")
     asyncio.run(main())
 
          

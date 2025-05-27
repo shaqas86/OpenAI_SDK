@@ -1,11 +1,11 @@
 [project]
-name = "tools-pattern"
+name = "chatbot-fastapi"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
-    "graphviz>=0.20.3",
-    "openai-agents>=0.0.14",
-    "tavily-python>=0.7.1",
+    "agentops>=0.4.12",
+    "fastapi[standard]>=0.115.12",
+    "openai-agents[litellm,viz]>=0.0.16",
 ]
